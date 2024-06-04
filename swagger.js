@@ -14,7 +14,7 @@ const swaggerOptions = {
       servers: [
         {
           url: 'https://crud-g2t1.onrender.com',
-          description: 'Servidor local',
+          description: 'Servidor da API',
         },
       ],
     },

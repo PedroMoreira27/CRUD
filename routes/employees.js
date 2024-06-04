@@ -176,7 +176,10 @@ router.put('/:id', async (req, res) => {
     const updatedEmployee = await Employee.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true },
+      {
+        new: true,
+        runValidators: true,
+      },
     );
     if (!updatedEmployee)
       return res.status(404).json({ message: 'Employee not found' });
