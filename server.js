@@ -6,12 +6,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Conectar ao MongoDB Atlas
+const mongoURI = 'mongodb+srv://PedroMoreira27:Zubumafu%40123@crud.amjibhv.mongodb.net/';
+
 mongoose
-  .connect('your_mongodb_atlas_connection_string', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(mongoURI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
 
@@ -20,3 +18,7 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const employeeRoutes = require('./routes/employees');
 app.use('/api/employees', employeeRoutes);
+
+app.get('/', (req, res) => {
+  res.send('API is running');
+});

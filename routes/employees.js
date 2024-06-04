@@ -2,7 +2,6 @@ const express = require('express');
 const Employee = require('../models/Employee');
 const router = express.Router();
 
-// Listar todos os funcionários
 router.get('/', async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Listar um funcionário específico
 router.get('/:id', async (req, res) => {
   try {
     const employee = await Employee.findById(req.params.id);
@@ -23,7 +21,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Cadastrar um novo funcionário
 router.post('/', async (req, res) => {
   const employee = new Employee({
     name: req.body.name,
@@ -39,7 +36,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Atualizar um funcionário específico
 router.put('/:id', async (req, res) => {
   try {
     const updatedEmployee = await Employee.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -50,7 +46,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Deletar um funcionário específico
 router.delete('/:id', async (req, res) => {
   try {
     const deletedEmployee = await Employee.findByIdAndDelete(req.params.id);
