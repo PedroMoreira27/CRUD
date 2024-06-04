@@ -22,3 +22,5 @@ app.use('/api/employees', employeeRoutes);
 app.get('/', (req, res) => {
   res.send('API is running');
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
